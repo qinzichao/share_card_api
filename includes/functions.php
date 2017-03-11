@@ -348,4 +348,61 @@ function user_get_other(&$db,$data){
 	return $data;
 }
 
+/**
+ * 获取查看我的列表
+ *
+ * @param unknown $db
+ * @param unknown $data
+ */
+function see_view_list(&$db,$data){
+
+	$openid=$data["openid"];
+
+	$sql="select u.* from ".DB_PREFIX."user_view u_v
+	left join ".DB_PREFIX."user u on u_v.openid=u.openid where u_v.openid2='{$openid}' 
+	order by u_v.id desc limit 100
+	";
+	$user_list=$db->getAll($sql);
+
+	return $user_list;
+}
+
+/**
+ * 获取喜欢我的列表
+ *
+ * @param unknown $db
+ * @param unknown $data
+ */
+function see_love_list(&$db,$data){
+
+	$openid=$data["openid"];
+
+	$sql="select u.* from ".DB_PREFIX."user_love u_l
+	left join ".DB_PREFIX."user u on u_l.openid=u.openid where u_l.openid2='{$openid}'
+	order by u_l.id desc limit 100
+	";
+	$user_list=$db->getAll($sql);
+
+	return $user_list;
+}
+
+/**
+ * 获取收藏我的列表
+ *
+ * @param unknown $db
+ * @param unknown $data
+ */
+function see_collect_list(&$db,$data){
+
+	$openid=$data["openid"];
+
+	$sql="select u.* from ".DB_PREFIX."user_collect u_c
+	left join ".DB_PREFIX."user u on u_c.openid=u.openid where u_c.openid2='{$openid}'
+	order by u_c.id desc limit 100
+	";
+	$user_list=$db->getAll($sql);
+
+	return $user_list;
+}
+
 ?>
