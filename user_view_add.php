@@ -28,6 +28,14 @@ if(!isset($data["openid2"])||!$data["openid2"]){
 	));
 }
 
+if($data["openid"]==$data["openid2"]){
+	ajaxReturn(array(
+	"code"=>0,
+	"msg"=>"自已不能查看自已",
+	"data"=>array(),
+	));
+}
+
 $result=user_view_add($db, $data);
 
 if($result){	

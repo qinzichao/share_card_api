@@ -29,7 +29,9 @@ if(!isset($data["openid2"])||!$data["openid2"]){
 }
 
 //更新查看记录
-$result=user_view_add($db, $data);
+if($data["openid"]!=$data["openid2"]){
+	$result=user_view_add($db, $data);
+}
 
 //获取那个人信息
 $user=user_get_other($db, $data);
