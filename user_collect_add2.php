@@ -47,7 +47,7 @@ $openid2=$data["openid2"];
 
 $my=user_get($db, array("openid"=>$openid));
 
-if($my&&$form_id){
+if($my&&$form_id&&$form_id!="the formId is a mock one"){
 
 	//获取访问令牌
 	require_once dirname(__FILE__)."/Service/Common/Cache.php";
