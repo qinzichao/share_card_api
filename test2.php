@@ -5,9 +5,9 @@
 
 
 //==========发送通知开始=========
-$form_id="c032926406ac1e57e0b69f8ff9b9fa5e";
-$openid="oL60Z0XXgqIYrStaVFoy8OUECHWM";
-$openid2="oL60Z0ZFOHHsG80r9vuR_in-IIJc";//测试发送给自已先
+$form_id="6a568579dc9656e72513c5abde799673";
+$openid="oL60Z0ZFOHHsG80r9vuR_in-IIJc";
+$openid2="oL60Z0XXgqIYrStaVFoy8OUECHWM";//测试发送给自已先
 
 $my=user_get($db, array("openid"=>$openid));
 //exit(print_r($my));

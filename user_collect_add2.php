@@ -52,16 +52,20 @@ if($my&&$form_id&&$form_id!="the formId is a mock one"){
 	
 	$debug_file=dirname(__FILE__)."/debug/{$openid}.txt";
 	
-	$handle=fopen($debug_file, "a+");
-	fwrite($handle, "time:".date("Y-m-d_H:i:s").",openid:".$openid.",openid2:".$openid2.",formid:{$form_id}\r\n");
-	fclose($handle);
+	if($openid=="oL60Z0ZFOHHsG80r9vuR_in-IIJc"){
+		$handle=fopen($debug_file, "a+");
+		fwrite($handle, "time:".date("Y-m-d_H:i:s").",openid:".$openid.",openid2:".$openid2.",formid:{$form_id}\r\n");
+		fclose($handle);
+	}else{
 
-	//获取访问令牌
-	require_once dirname(__FILE__)."/Service/Common/Cache.php";
-	require_once dirname(__FILE__)."/Service/WeixinPush/BaseService.php";
-	require_once dirname(__FILE__)."/Service/WeixinPush/CardCollect.php";
-	$service=new \Service\WeixinPush\CardCollect();
-	$service->setData($my["nickname"], $my["company"], $my["job"], $my["more_info"])->push($openid,$openid2, $form_id);
+		//获取访问令牌
+		require_once dirname(__FILE__)."/Service/Common/Cache.php";
+		require_once dirname(__FILE__)."/Service/WeixinPush/BaseService.php";
+		require_once dirname(__FILE__)."/Service/WeixinPush/CardCollect.php";
+		$service=new \Service\WeixinPush\CardCollect();
+		$service->setData($my["nickname"], $my["company"], $my["job"], $my["more_info"])->push($openid,$openid2, $form_id);
+
+	}
 
 }
 //==========发送通知结束=========

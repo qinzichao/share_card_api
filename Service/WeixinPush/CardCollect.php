@@ -44,7 +44,7 @@ class CardCollect extends BaseService
         $url = $this->wx_push_url."access_token=".$this->accessToken;
 		
         $dataRes = $this->request_post($url, $json_template);
-        //exit($dataRes);
+        exit($dataRes);
         $dataRes = json_decode($dataRes, true);
         if ($dataRes ['errcode'] == 0) {
             return true;
