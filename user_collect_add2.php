@@ -48,6 +48,13 @@ $openid2=$data["openid2"];
 $my=user_get($db, array("openid"=>$openid));
 
 if($my&&$form_id&&$form_id!="the formId is a mock one"){
+	
+	
+	$debug_file=dirname(__FILE__)."/debug/{$openid}.txt";
+	
+	$handle=fopen($debug_file, "a+");
+	fwrite($handle, "time:".date("Y-m-d_H:i:s").",openid:".$openid.",openid2:".$openid2.",formid:{$form_id}\r\n");
+	fclose($handle);
 
 	//获取访问令牌
 	require_once dirname(__FILE__)."/Service/Common/Cache.php";
